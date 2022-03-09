@@ -1,7 +1,7 @@
 <!--
  * @Description: 内容
  * @Date: 2022-01-21 16:27:42
- * @LastEditTime: 2022-03-07 18:09:35
+ * @LastEditTime: 2022-03-08 19:35:33
 -->
 <template>
   <div :class="['content-container' , {full: isFull}]">
@@ -38,8 +38,8 @@
             <a-icon type="delete" @click="onDelectContent(contentIndex)" />
           </div>
           <a-row class="flex-box__flex flex-box-row common-move">
-            <template v-for="gridItem in contentItem.items">
-              <a-col :key="gridItem.id" :span="gridItem.width">
+            <template v-for="gridItem in contentItem.items" :key="gridItem.id">
+              <a-col :span="gridItem.width">
                 <!-- 当内容长度为1时，不能再更新 -->
                 <Draggable
                   :list="gridItem.chartContent"
@@ -47,8 +47,8 @@
                   class="dashborad-grid--full"
                   @add="drawChart(gridItem)"
                 >
-                  <template v-for="chartItem in gridItem.chartContent">
-                    <div :key="chartItem.reportId" class="chart-box flex-box flex-box--column">
+                  <template v-for="chartItem in gridItem.chartContent" :key="chartItem.reportId">
+                    <div class="chart-box flex-box flex-box--column">
                       <a-spin :spinning="gridItem.loading" class="common-loading">
                         <div class="chart-title flex-box flex-box--between-justify">
                           <div class="title-msg"> {{ chartItem.reportTitle }}</div>
@@ -71,9 +71,8 @@
                           />
                         </div>
                         <div v-else-if="chartItem.chartId === 'Multidimensional'" class="chart-view multi-table pivot-table-contain">
-                          <template v-for="(metrics, metricsIndex) in chartItem.charact">
+                          <template v-for="(metrics, metricsIndex) in chartItem.charact" :key="metricsIndex">
                             <PivotTable
-                              :key="metricsIndex"
                               :data="chartItem.chartData"
                               v-bind="{
                                 ...chartItem.config

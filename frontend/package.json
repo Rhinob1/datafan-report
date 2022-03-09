@@ -3,18 +3,20 @@
   "version": "0.7.2",
   "private": true,
   "scripts": {
-    "preserve": "node ./src/utils/checkUpdate.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "predeploy": "yarn build",
-    "sense": "yarn upgrade @sense70/common-dsmanage-vue && yarn upgrade @sense70/common-component-vue && yarn upgrade @sense70/common-sysmanage-vue"
+    "preserve": "node ./src/utils/checkUpdate.js",
+    "sense": "yarn upgrade @sense70/common-dsmanage-vue && yarn upgrade @sense70/common-component-vue && yarn upgrade @sense70/common-sysmanage-vue && yarn upgrade @young-datafan/datafan-ui"
   },
   "dependencies": {
     "@antv/data-set": "^0.11.4",
     "@click2buy/vue-pivot-table": "^1.1.6",
-    "@sense70/common-component-vue": "~1.3.0",
-    "@sense70/common-sysmanage-vue": "~1.2.0",
+    "@sense70/common-component-vue": "~1.4.0",
+    "@sense70/common-sysmanage-vue": "~1.4.0",
+    "@vue/compat": "^3.1.0",
+    "@young-datafan/datafan-ui": "~1.4.0",
     "animate.css": "^4.1.0",
     "ant-design-vue": "1.7.2",
     "axios": "^0.19.2",
@@ -34,7 +36,7 @@
     "v-charts": "^1.19.0",
     "vcolorpicker": "^0.1.8",
     "viser-vue": "^2.4.8",
-    "vue": "^2.6.11",
+    "vue": "^3.1.0",
     "vue-cropper": "^0.5.7",
     "vue-draggable-resizable": "^2.3.0",
     "vue-i18n": "^8.18.2",
@@ -46,9 +48,10 @@
   },
   "devDependencies": {
     "@ant-design/colors": "^4.0.1",
-    "@vue/cli-plugin-babel": "^4.4.0",
-    "@vue/cli-plugin-eslint": "^4.4.0",
-    "@vue/cli-service": "^4.4.0",
+    "@vue/cli-plugin-babel": "~5.0.1",
+    "@vue/cli-plugin-eslint": "~5.0.1",
+    "@vue/cli-service": "~5.0.1",
+    "@vue/compiler-sfc": "^3.1.0",
     "@vuepress/plugin-back-to-top": "^1.5.2",
     "babel-eslint": "^10.1.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
@@ -67,7 +70,6 @@
     "style-resources-loader": "^1.3.2",
     "terser-webpack-plugin": "^5.2.3",
     "vue-cli-plugin-style-resources-loader": "^0.1.4",
-    "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.5.2",
     "webpack-theme-color-replacer": "^1.3.12",
     "whatwg-fetch": "^3.0.0"
@@ -78,7 +80,6 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/recommended",
       "eslint:recommended",
       "prettier"
     ],

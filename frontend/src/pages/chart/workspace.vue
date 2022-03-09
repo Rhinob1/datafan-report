@@ -1,16 +1,15 @@
 <!--
  * @Description: 图表工作台
  * @Date: 2022-02-18 16:47:33
- * @LastEditTime: 2022-03-01 16:49:37
+ * @LastEditTime: 2022-03-08 19:10:26
 -->
 <template>
   <div class="workspace flex-box flex-box--column">
     <div class="workspace-title workspace-block flex-box flex-box--center-items flex-box--between-justify flex-box-row-small">
       <div class="block-title">报表分析工具</div>
       <div class="chart-switch-box flex-box">
-        <template v-for="item in chartOption">
+        <template v-for="item in chartOption" :key="item.value">
           <a-popover
-            :key="item.value"
             :title="item.name"
           >
             <template slot="content">

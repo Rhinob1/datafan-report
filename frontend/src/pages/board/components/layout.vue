@@ -1,7 +1,7 @@
 <!--
  * @Description: 新增/编辑看板布局
  * @Date: 2022-01-19 16:40:06
- * @LastEditTime: 2022-02-17 15:51:55
+ * @LastEditTime: 2022-03-08 19:35:43
 -->
 <template>
   <div class="dashborad-layout">
@@ -14,8 +14,8 @@
         :clone="original => JSON.parse(JSON.stringify(original))"
       >
         <a-row v-for="(grid, gridIndex) in gridData" :key="gridIndex" class="grid-item flex-box-row common-move">
-          <template v-for="(item, itemIndex) in grid.items">
-            <a-col :key="itemIndex" :span="item.width">
+          <template v-for="(item, itemIndex) in grid.items" :key="itemIndex">
+            <a-col :span="item.width">
               <div class="dashborad-grid--full" />
             </a-col>
           </template>
@@ -25,8 +25,8 @@
     <div class="dashborad-border flex-box-row">
       <span class="block-title flex-box-row">分割线</span>
       <Draggable class="border-box flex-box-row" :list="borderData" :options="draggableOption">
-        <template v-for="(border, borderIndex) in borderData">
-          <div :key="borderIndex" :class="['border-item', 'common-move', `${border.value}-type`]" />
+        <template v-for="(border, borderIndex) in borderData" :key="borderIndex">
+          <div :class="['border-item', 'common-move', `${border.value}-type`]" />
         </template>
       </Draggable>
     </div>
@@ -38,20 +38,20 @@
         :options="draggableOption"
         :clone="original => JSON.parse(JSON.stringify(original))"
       >
-        <template v-for="(title, titleIndex) in titleData">
-          <div :key="titleIndex" :class="['title-item', 'common-move']" :style="getTitleStyle(title)">ABCDEF...</div>
+        <template v-for="(title, titleIndex) in titleData" :key="titleIndex">
+          <div :class="['title-item', 'common-move']" :style="getTitleStyle(title)">ABCDEF...</div>
         </template>
       </Draggable>
     </div>
     <div class="dashborad-color flex-box-row">
       <span class="block-title flex-box-row">配色方案</span>
       <div class="theme-box flex-box-row">
-        <template v-for="(theme, themeIndex) in colorData">
-          <a-popover :key="themeIndex">
+        <template v-for="(theme, themeIndex) in colorData" :key="themeIndex">
+          <a-popover>
             <template slot="content">
               <div class="color-box">
-                <template v-for="(color, colorIndex) in theme.colors">
-                  <div :key="colorIndex" class="color-item" :style="`background: ${color}`" />
+                <template v-for="(color, colorIndex) in theme.colors" :key="colorIndex">
+                  <div class="color-item" :style="`background: ${color}`" />
                 </template>
               </div>
             </template>

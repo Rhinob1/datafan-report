@@ -1,7 +1,7 @@
 <!--
  * @Description: 图表
  * @Date: 2022-01-21 15:00:14
- * @LastEditTime: 2022-02-15 14:14:55
+ * @LastEditTime: 2022-03-08 19:13:16
 -->
 <template>
   <div class="dashborad-chart">
@@ -9,8 +9,8 @@
       <div class="chart-content">
         <a-input v-model="search" class="flex-box-row" allow-clear placeholder="请输入图表名称" />
         <Draggable class="chart-list flex-box-row" :list="effectChartList" :options="draggableOption">
-          <template v-for="chart in effectChartList">
-            <div :key="chart.reportId" class="chart-item flex-box-row-small common-move">
+          <template v-for="chart in effectChartList" :key="chart.reportId">
+            <div class="chart-item flex-box-row-small common-move">
               <span class="title">{{ chart.reportTitle }}</span>
               <div class="flex-box flex-box--center-items">
                 <div class="item-label flex-box-col-small">创建人:</div>

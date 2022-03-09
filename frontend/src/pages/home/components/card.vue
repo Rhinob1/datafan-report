@@ -1,7 +1,8 @@
+/* eslint-disable vue/no-v-for-template-key */
 <!--
  * @Description: 卡片
  * @Date: 2022-01-19 10:23:14
- * @LastEditTime: 2022-02-17 18:04:38
+ * @LastEditTime: 2022-03-08 19:23:22
 -->
 <template>
   <div class="home-card">
@@ -11,8 +12,8 @@
           <a-icon class="icon" type="plus" />
           <span>新增看板</span>
         </div>
-        <template v-for="card in cardData">
-          <div :key="card.dashboardId" class="card-item" @click="onViewBoard(card)">
+        <template v-for="card in cardData" :key="card.dashboardId">
+          <div class="card-item" @click="onViewBoard(card)">
             <div class="icon flex-box--end-self" />
             <div class="name">{{ card.dashboardName }}</div>
             <div class="time">创建时间：{{ card.createTime }}</div>

@@ -1,8 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const ThemeColorReplacer = require('webpack-theme-color-replacer')
-const { getThemeColors, modifyVars } = require('./src/utils/themeUtil')
-const { resolveCss } = require('./src/utils/theme-color-replacer-extend')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 const productionGzipExtensions = ['js', 'css']
@@ -29,7 +26,7 @@ module.exports = {
       }
     }
   },
-  transpileDependencies: ['sensesai-router', '@sense70/*'],
+  transpileDependencies: ['@sense70/*', '@young-datafan/*'],
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
@@ -51,16 +48,13 @@ module.exports = {
     config.performance = {
       hints: false
     }
-    config.plugins.push(
-      new ThemeColorReplacer({
-        fileName: 'css/theme-colors-[contenthash:8].css',
-        matchColors: getThemeColors(),
-        injectCss: true,
-        resolveCss
-      })
-    )
     // Ignore all locale files of moment.js
-    config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
+    config.plugins.push(new webpack.IgnorePlugin({
+      resourceRegExp: /^\.\/locale$/,
+      contextRegExp: /moment$/
+    }))
+    // config.plugins.push(new webpack.WatchIgnorePlugin({ paths: ['src/test'] }))
+
     // 版本戳
     config.plugins.push(new webpack.BannerPlugin(`new version`))
     // 生产环境下将资源压缩成gzip格式
@@ -81,6 +75,21 @@ module.exports = {
     }
   },
   chainWebpack: config => {
+    config.resolve.alias.set('vue', '@vue/compat')
+
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap(options => {
+        return {
+          ...options,
+          compilerOptions: {
+            compatConfig: {
+              MODE: 2
+            }
+          }
+        }
+      })
     // 生产环境下关闭css压缩的 colormin 项，因为此项优化与主题色替换功能冲突
     if (isProd) {
       config.plugin('optimize-css').tap(args => {
@@ -100,7 +109,6 @@ module.exports = {
     loaderOptions: {
       less: {
         lessOptions: {
-          modifyVars: modifyVars(),
           javascriptEnabled: true
         }
       }

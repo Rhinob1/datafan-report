@@ -18,7 +18,7 @@
         'lc-layout__flex',
         `${prefixCls}__input`,
       ]"
-      @keyup.enter.native="onClose"
+      @keyup.enter="onClose"
       @on-blur="onClose"
     />
 
@@ -42,7 +42,7 @@
         :class="[
           `${prefixCls}__edit--icon`,
         ]"
-        @click.native="showEditInput"
+        @click="showEditInput"
       />
     </div>
   </div>
@@ -138,7 +138,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="less" scope>
 .modify-input {
   cursor: pointer;
   &--primary {

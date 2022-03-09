@@ -1,7 +1,7 @@
 <!--
  * @Description: 筛选器
  * @Date: 2022-02-21 14:45:04
- * @LastEditTime: 2022-03-01 16:17:32
+ * @LastEditTime: 2022-03-08 19:34:24
 -->
 <template>
   <div class="filter-box">
@@ -15,8 +15,8 @@
         <a-dropdown :trigger="['click']">
           <a-tag closable :color="getTagColorByType(item.type)" @close="onClose(index)">{{ item.name }}</a-tag>
           <a-menu slot="overlay">
-            <template v-for="menuItem in drapdownList">
-              <a-menu-item :key="menuItem.value" @click="onShowFilterModal(item, index)">
+            <template v-for="menuItem in drapdownList" :key="menuItem.value">
+              <a-menu-item @click="onShowFilterModal(item, index)">
                 {{ menuItem.label }}
               </a-menu-item>
             </template>

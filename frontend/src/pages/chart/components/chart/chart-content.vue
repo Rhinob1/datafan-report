@@ -45,9 +45,8 @@
           height="auto"
         />
         <div v-else-if="chartType === 'Multidimensional'" class="chart-view multi-table pivot-table-contain">
-          <template v-for="(metrics, metricsIndex) in metricsList">
+          <template v-for="(metrics, metricsIndex) in metricsList" :key="metricsIndex">
             <PivotTable
-              :key="metricsIndex"
               :data="chartData"
               v-bind="{
                 ...chartConfig

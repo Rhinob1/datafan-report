@@ -225,7 +225,7 @@ module.exports = {
     'no-eval': 1, // 禁用 eval()
     'handle-callback-err': [1, '^(err|error)$'], // 要求回调函数中有容错处理
     'no-sequences': 1, // 禁用逗号操作符
-    'no-return-assign': [1, 'except-parens'] // 禁止在 return 语句中使用赋值语句
-
+    'no-return-assign': [1, 'except-parens'], // 禁止在 return 语句中使用赋值语句
+    'vue/no-v-for-template-key': 'off'
   }
 }

@@ -1,7 +1,6 @@
 /*
  * @Description: 主配置
  * @Date: 2022-01-21 14:48:10
- * @LastEditTime: 2022-02-24 10:40:27
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -13,18 +12,20 @@ import { initI18n } from '@/utils/i18n'
 import 'moment/locale/zh-cn'
 import { loginIgnore } from '@/router/index'
 import Cookie from 'js-cookie'
-import SSComponent from '@sense70/common-component-vue'
-import { bootstrap, initialRouter, patchComponent } from '@sense70/common-component-vue'
+import { bootstrap, initialRouter } from '@sense70/common-component-vue'
+
+import SSComponent from '@young-datafan/datafan-ui'
+import '@young-datafan/datafan-ui/assets/fonts/iconfont.css'
+import '@young-datafan/datafan-ui/assets/commonCss.less'
+// import '@young-datafan/datafan-ui/assets/page-table.scss'
+
 const router = initialRouter(require('@/router/config').default)
-import '@sense70/common-sysmanage-vue/fonts/iconfont.css'
 import './static/css/utilities.min.css'
 import './theme/index.less'
 import './theme/common.less'
 import './components/menu/index.less'
 import 'xe-utils'
 import VXETable from 'vxe-table'
-import '@sense70/common-component-vue/assets/commonCss.less'
-import '@sense70/common-component-vue/assets/page-table.scss'
 // 引入flex布局
 import '@/assets/css/flex-layout.css'
 import { ABaseModal } from './components/common'
@@ -62,13 +63,13 @@ bootstrap({
   name: 'dashboard'
 })
 
-const VueInstance = new Vue({
+new Vue({
   router,
   store,
   i18n,
   render: h => h(App)
 }).$mount('#app')
-patchComponent(VueInstance)
+// patchComponent(VueInstance)
 
 router.beforeEach((to, from, next) => {
   const auth = Cookie.get('Authorization')

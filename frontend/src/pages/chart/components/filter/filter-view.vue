@@ -1,7 +1,7 @@
 <!--
  * @Description: 筛选
  * @Date: 2022-02-18 17:43:01
- * @LastEditTime: 2022-02-28 14:34:08
+ * @LastEditTime: 2022-03-08 19:29:58
 -->
 <template>
   <div class="filter-view">
@@ -21,12 +21,12 @@
       <div class="block-title">页面</div>
 
       <div class="theme-box flex-box-row">
-        <template v-for="(theme, themeIndex) in colorData">
-          <a-popover :key="themeIndex">
+        <template v-for="(theme, themeIndex) in colorData" :key="themeIndex">
+          <a-popover>
             <template slot="content">
               <div class="color-box">
-                <template v-for="(color, colorIndex) in theme.colors">
-                  <div :key="colorIndex" class="color-item" :style="`background: ${color}`" />
+                <template v-for="(color, colorIndex) in theme.colors" :key="colorIndex">
+                  <div class="color-item" :style="`background: ${color}`" />
                 </template>
               </div>
             </template>

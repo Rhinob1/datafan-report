@@ -1,7 +1,7 @@
 <!--
  * @Description: 图表轴
  * @Date: 2022-02-22 19:20:19
- * @LastEditTime: 2022-03-02 17:47:45
+ * @LastEditTime: 2022-03-08 19:36:30
 -->
 <template>
   <div class="axis-box">
@@ -28,8 +28,8 @@
           <a-dropdown :trigger="['click']">
             <a-tag closable :color="getTagColorByType(item.type)" @close="onClose(index, 'column')">{{ item.showName || item.name }}</a-tag>
             <a-menu slot="overlay">
-              <template v-for="menuItem in item.setting">
-                <a-sub-menu v-if="menuItem.children" :key="menuItem.value">
+              <template v-for="menuItem in item.setting" :key="menuItem.value">
+                <a-sub-menu v-if="menuItem.children">
                   <span slot="title">{{ menuItem.label }}</span>
                   <a-menu-item
                     v-for="children in menuItem.children"
@@ -72,8 +72,8 @@
           <a-dropdown :trigger="['click']">
             <a-tag closable :color="getTagColorByType(item.type)" @close="onClose(index, 'row')">{{ item.showName || item.name }}</a-tag>
             <a-menu slot="overlay">
-              <template v-for="menuItem in item.setting">
-                <a-sub-menu v-if="menuItem.children" :key="menuItem.value">
+              <template v-for="menuItem in item.setting" :key="menuItem.value">
+                <a-sub-menu v-if="menuItem.children">
                   <span slot="title">{{ menuItem.label }}</span>
                   <a-menu-item
                     v-for="children in menuItem.children"
